@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -27,7 +29,7 @@ public class SpawnManager : MonoBehaviour
         foreach (int index in spawnOrder)
         {
             Instantiate(fruitPrefabs[index], spawnPoint.position, spawnPoint.rotation);
-            yield return new WaitForSeconds(1f); // Wait for 1 second between spawns
+            yield return new WaitForSeconds(2f); // Wait for 2 second between spawns
         }
     }
 
@@ -40,5 +42,11 @@ public class SpawnManager : MonoBehaviour
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+        
     }
 }

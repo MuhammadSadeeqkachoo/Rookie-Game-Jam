@@ -14,11 +14,13 @@ public class SlingshotMechanic : MonoBehaviour
     [SerializeField]
     TMP_Text stonecount;
 
+
     private bool hasLaunched = false;
 
-    private void Start()
+    private void Awake()
     {
         stonecount.text = $"Stones 5/5";
+        
     }
 
     private void Update()
@@ -27,6 +29,7 @@ public class SlingshotMechanic : MonoBehaviour
         {
              LaunchStone();
              stonecount.text = $"Stones {currentStones}/{maxStones}";
+            
 
         }
 

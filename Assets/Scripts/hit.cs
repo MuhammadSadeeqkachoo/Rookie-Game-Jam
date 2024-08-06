@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class hit : MonoBehaviour
 {
-    SpawnManager spawnManager;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,9 +10,7 @@ public class hit : MonoBehaviour
         {
             Debug.Log("you hit fruit");
             Destroy(collision.collider.gameObject);
-           
-            
-            
+
         }
 
     }
