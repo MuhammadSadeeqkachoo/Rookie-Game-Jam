@@ -245,13 +245,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249992745}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.172947, y: -0.11756858, z: -0.011372663, w: 0.9778229}
-  m_LocalPosition: {x: 0.0007999997, y: -0.0675, z: 0.013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0768, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1161211115}
-  m_LocalEulerAnglesHint: {x: 19.606, y: -14.374, z: -3.829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &249992747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 6663106689579412779, guid: 0bdd1f5e46518cf4b88b10867dd003d9, type: 3}
-  launchForce: 50
+  cube: {fileID: 5505859630392217589, guid: f02b100c52557914583e04576ba4e68f, type: 3}
+  launchForce: 10
   maxStones: 5
   jk: {fileID: 1394443381}
   stonecount: {fileID: 860961334}

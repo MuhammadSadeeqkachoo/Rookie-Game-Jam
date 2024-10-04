@@ -265,7 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 6663106689579412779, guid: 0bdd1f5e46518cf4b88b10867dd003d9, type: 3}
-  launchForce: 50
+  cube: {fileID: 0}
+  launchForce: 10
   maxStones: 5
   jk: {fileID: 1394443381}
   stonecount: {fileID: 860961334}

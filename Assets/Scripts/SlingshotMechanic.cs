@@ -1,21 +1,27 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Dweiss;
+
 
 public class SlingshotMechanic : MonoBehaviour
 {
-    public GameObject stonePrefab;
-    public float launchForce = 20;
+    public GameObject stonePrefab, cube;
+    public float launchForce = 10;
     public int maxStones = 5;
     private int currentStones = 5;
-    Rigidbody rb;
+    Rigidbody rb,cubeRb;
+    
     [SerializeField]
     Joystick jk;
     [SerializeField]
     TMP_Text stonecount;
+    float v ;
+    float h;
 
 
     private bool hasLaunched = false;
+    private bool aim = false;
 
     private void Awake()
     {
@@ -23,12 +29,29 @@ public class SlingshotMechanic : MonoBehaviour
         
     }
 
+
     private void Update()
     {
-        if (jk != null && jk.Vertical != 0 && currentStones > 0) 
+
+        if (jk != null  && currentStones > 0 ) 
         {
-             LaunchStone();
-             stonecount.text = $"Stones {currentStones}/{maxStones}";
+            if(jk.Horizontal != 0 || jk.Vertical != 0) 
+            {
+                v = jk.Vertical;
+                h = jk.Horizontal;
+                if (!aim)
+                {
+                    StartCoroutine(Aim());
+                }
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                StopCoroutine(Aim());
+                LaunchStone();
+                stonecount.text = $"Stones {currentStones}/{maxStones}";
+            }
+            
             
 
         }
@@ -44,13 +67,15 @@ public class SlingshotMechanic : MonoBehaviour
     {
         if (!hasLaunched)
         {
-            GameObject stone = Instantiate(stonePrefab, transform.position, transform.rotation);
-            rb = stone.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * launchForce, ForceMode.Impulse);
-            Destroy(stone, 3);//Destroy After 3 seconds
-            currentStones--;
-            hasLaunched = true;
-            StartCoroutine(ToggleLaunch());
+
+                GameObject stone = Instantiate(stonePrefab, transform.position, transform.rotation);
+                rb = stone.GetComponent<Rigidbody>();
+                rb.AddForce(-new Vector3(h,v,v) * launchForce, ForceMode.Impulse);
+                Destroy(stone, 3);//Destroy After 3 seconds
+                currentStones--;
+                hasLaunched = true;
+                StartCoroutine(ToggleLaunch());
+            
         }
     }
 
@@ -60,6 +85,16 @@ public class SlingshotMechanic : MonoBehaviour
         hasLaunched = false;
     }
 
+     IEnumerator Aim()
+    {
+        Instantiate(cube,transform.position,Quaternion.identity);
+        cubeRb = cube.GetComponent<Rigidbody>();
+        rb.AddForce(-new Vector3(h, v, v) * launchForce, ForceMode.Impulse);
+        Destroy(cube, 3);//Destroy After 3 seconds
+        yield return new WaitForSeconds(1);
+        aim = true;
 
- 
+
+    }
+
 }
