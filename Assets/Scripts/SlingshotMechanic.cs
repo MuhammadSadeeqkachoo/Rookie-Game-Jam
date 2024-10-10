@@ -10,6 +10,7 @@ public class SlingshotMechanic : MonoBehaviour
     public float launchForce = 10;
     public int maxStones = 5;
     private int currentStones = 5;
+    [SerializeField]
     Rigidbody rb,cubeRb;
     
     [SerializeField]
@@ -39,15 +40,15 @@ public class SlingshotMechanic : MonoBehaviour
             {
                 v = jk.Vertical;
                 h = jk.Horizontal;
-                if (!aim)
-                {
-                    StartCoroutine(Aim());
-                }
+                //if (!aim)
+                //{
+                //    StartCoroutine(Aim());
+                //}
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                StopCoroutine(Aim());
+                //StopCoroutine(Aim());
                 LaunchStone();
                 stonecount.text = $"Stones {currentStones}/{maxStones}";
             }
@@ -85,16 +86,16 @@ public class SlingshotMechanic : MonoBehaviour
         hasLaunched = false;
     }
 
-     IEnumerator Aim()
-    {
-        Instantiate(cube,transform.position,Quaternion.identity);
-        cubeRb = cube.GetComponent<Rigidbody>();
-        rb.AddForce(-new Vector3(h, v, v) * launchForce, ForceMode.Impulse);
-        Destroy(cube, 3);//Destroy After 3 seconds
-        yield return new WaitForSeconds(1);
-        aim = true;
+    // IEnumerator Aim()
+    //{
+    //    Instantiate(cube,transform.position,Quaternion.identity);
+    //    cubeRb = cube.GetComponent<Rigidbody>();
+    //    rb.AddForce(-new Vector3(h, v, v) * launchForce, ForceMode.Impulse);
+    //    Destroy(cube, 3);//Destroy After 3 seconds
+    //    yield return new WaitForSeconds(1);
+    //    aim = true;
 
 
-    }
+    //}
 
 }

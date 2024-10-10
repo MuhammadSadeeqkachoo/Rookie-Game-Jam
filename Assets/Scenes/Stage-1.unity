@@ -268,6 +268,8 @@ MonoBehaviour:
   cube: {fileID: 5505859630392217589, guid: f02b100c52557914583e04576ba4e68f, type: 3}
   launchForce: 10
   maxStones: 5
+  rb: {fileID: 0}
+  cubeRb: {fileID: 0}
   jk: {fileID: 1394443381}
   stonecount: {fileID: 860961334}
 --- !u!1 &407480910
